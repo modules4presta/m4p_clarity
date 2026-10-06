@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="module" source-language="en-US" target-language="en-US" datatype="plaintext">
+    <body>
+      <trans-unit id="ae4115399c4814f9eb5c30c3ca6f2a8a">
+        <source>Microsoft Clarity</source>
+        <target>Microsoft Clarity</target>
+      </trans-unit>
+      <trans-unit id="9d78040bd4bf8a07084e6490401445af">
+        <source>Connects the shop to Microsoft Clarity: session recordings and click maps, without touching templates.</source>
+        <target>Connects the shop to Microsoft Clarity: session recordings and click maps, without touching templates.</target>
+      </trans-unit>
+      <trans-unit id="f4f70727dc34561dfde1a3c529b6205c">
+        <source>Settings</source>
+        <target>Settings</target>
+      </trans-unit>
+      <trans-unit id="00d23a76e43b46dae9ec7aa9dcbebb32">
+        <source>Enabled</source>
+        <target>Enabled</target>
+      </trans-unit>
+      <trans-unit id="f63e72922cb67bae5a051fee87eeae5a">
+        <source>Turns the Clarity script on and off.</source>
+        <target>Turns the Clarity script on and off.</target>
+      </trans-unit>
+      <trans-unit id="521c36a31c2762741cf0f8890cbe05e3">
+        <source>On</source>
+        <target>On</target>
+      </trans-unit>
+      <trans-unit id="d15305d7a4e34e02489c74a5ef542f36">
+        <source>Off</source>
+        <target>Off</target>
+      </trans-unit>
+      <trans-unit id="8afa70a33d60096efd5c6bd0d90d5415">
+        <source>Clarity project ID</source>
+        <target>Clarity project ID</target>
+      </trans-unit>
+      <trans-unit id="08f5bc45939491a31d02b1b4380375d5">
+        <source>In Clarity, open My Projects, click the gear icon and copy the project ID.</source>
+        <target>In Clarity, open My Projects, click the gear icon and copy the project ID.</target>
+      </trans-unit>
+      <trans-unit id="c9cc8cce247e49bae79f15173ce97354">
+        <source>Save</source>
+        <target>Save</target>
+      </trans-unit>
+      <trans-unit id="630f6dc397fe74e52d5189e2c80f282b">
+        <source>Back to list</source>
+        <target>Back to list</target>
+      </trans-unit>
+      <trans-unit id="0c6afa4dcf863452926fe5882a467407">
+        <source>That is not a valid Clarity project ID.</source>
+        <target>That is not a valid Clarity project ID.</target>
+      </trans-unit>
+      <trans-unit id="dc820acb48c19e97987da9882d7a06f9">
+        <source>Microsoft Clarity records how visitors use your shop: mouse movement, clicks, scrolling and the content of the pages they see.</source>
+        <target>Microsoft Clarity records how visitors use your shop: mouse movement, clicks, scrolling and the content of the pages they see.</target>
+      </trans-unit>
+      <trans-unit id="fc91185d5b3673f54c58fd8a0ee07e3b">
+        <source>Under EU law (GDPR and the ePrivacy directive) you must tell visitors about this recording before it starts and obtain their consent for analytics cookies.</source>
+        <target>Under EU law (GDPR and the ePrivacy directive) you must tell visitors about this recording before it starts and obtain their consent for analytics cookies.</target>
+      </trans-unit>
+      <trans-unit id="affb7d21455e6ce1ce2ff83cd6620b86">
+        <source>Switch this module on only once your cookie banner reports that analytics consent has been given, and describe the recording in your privacy policy.</source>
+        <target>Switch this module on only once your cookie banner reports that analytics consent has been given, and describe the recording in your privacy policy.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,15 @@
+{
+    "name": "modules4presta/m4p_clarity",
+    "description": "Connect Microsoft Clarity to PrestaShop - session recordings and click maps without touching templates.",
+    "type": "prestashop-module",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nice Code sp. z o.o. (Modules4Presta)",
+            "email": "contact@modules4presta.io",
+            "homepage": "https://nice-code.com"
+        }
+    ],
+    "require": { "php": ">=7.2.5" },
+    "homepage": "https://nice-code.com/pl/oferta/moduly-prestashop"
+}

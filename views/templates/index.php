@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * m4p_clarity
+ *
+ * @author    Modules4Presta <contact@modules4presta.io>
+ * @copyright 2026 Nice Code sp. z o.o. (Modules4Presta)
+ * @license   https://opensource.org/licenses/MIT MIT License
+ */
+
+/**
+ * Security file to prevent directory listing.
+ */
+header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
+header('Cache-Control: no-store, no-cache, must-revalidate');
+header('Cache-Control: post-check=0, pre-check=0', false);
+header('Pragma: no-cache');
+header('Location: ../');
+exit;
