@@ -30,6 +30,14 @@
         <source>Off</source>
         <target>Nie</target>
       </trans-unit>
+      <trans-unit id="044cf03b0e6a8d6e1e0e266c81d400a0">
+        <source>Wait for analytics consent</source>
+        <target>Czekaj na zgodę analityczną</target>
+      </trans-unit>
+      <trans-unit id="b7b03944dac38ad80cf8128cfa5c8c56">
+        <source>Loads Clarity only after the visitor accepts analytics cookies, and stops the recording when the consent is withdrawn. The consent comes from M4P Cookies, from Google Consent Mode v2 or from a call to m4pClarity.consent().</source>
+        <target>Ładuje Clarity dopiero po zgodzie na cookies analityczne i zatrzymuje nagrywanie po jej cofnięciu. Zgodę przekazuje M4P Cookies, Google Consent Mode v2 albo wywołanie m4pClarity.consent().</target>
+      </trans-unit>
       <trans-unit id="8afa70a33d60096efd5c6bd0d90d5415">
         <source>Clarity project ID</source>
         <target>Identyfikator projektu Clarity</target>
@@ -50,6 +58,14 @@
         <source>That is not a valid Clarity project ID.</source>
         <target>To nie jest poprawny identyfikator projektu Clarity.</target>
       </trans-unit>
+      <trans-unit id="4903d8d46a4a53ed7160acfc772408df">
+        <source>M4P Cookies is not active. Clarity loads once your cookie banner sends Google Consent Mode v2 with analytics_storage granted, or calls m4pClarity.consent(true) in the page.</source>
+        <target>Moduł M4P Cookies nie jest aktywny. Clarity załaduje się, gdy baner cookies wyśle Google Consent Mode v2 z analytics_storage ustawionym na granted albo wywoła na stronie m4pClarity.consent(true).</target>
+      </trans-unit>
+      <trans-unit id="23c70db61c92af6df81bf196fcfe8f37">
+        <source>With a banner that does neither, the tag does not load: switch "Wait for analytics consent" off and load the module the way that banner requires.</source>
+        <target>Przy banerze, który nie robi żadnej z tych rzeczy, tag się nie załaduje – wyłącz „Czekaj na zgodę analityczną” i ładuj moduł tak, jak wymaga tego baner.</target>
+      </trans-unit>
       <trans-unit id="dc820acb48c19e97987da9882d7a06f9">
         <source>Microsoft Clarity records how visitors use your shop: mouse movement, clicks, scrolling and the content of the pages they see.</source>
         <target>Microsoft Clarity nagrywa, jak odwiedzający korzystają ze sklepu: ruch myszy, kliknięcia, przewijanie i treść oglądanych stron.</target>
@@ -58,9 +74,9 @@
         <source>Under EU law (GDPR and the ePrivacy directive) you must tell visitors about this recording before it starts and obtain their consent for analytics cookies.</source>
         <target>Przepisy unijne (RODO i dyrektywa ePrivacy) nakładają obowiązek poinformowania odwiedzających o tym nagrywaniu, zanim się rozpocznie, oraz uzyskania ich zgody na pliki analityczne.</target>
       </trans-unit>
-      <trans-unit id="affb7d21455e6ce1ce2ff83cd6620b86">
-        <source>Switch this module on only once your cookie banner reports that analytics consent has been given, and describe the recording in your privacy policy.</source>
-        <target>Włącz ten moduł dopiero wtedy, gdy baner zgód potwierdzi zgodę na analitykę, i opisz nagrywanie w polityce prywatności.</target>
+      <trans-unit id="67b217852d25906b43922151a62fd46e">
+        <source>Turn on "Wait for analytics consent" or load the module only once your cookie banner reports that consent, and describe the recording in your privacy policy.</source>
+        <target>Włącz „Czekaj na zgodę analityczną” albo uruchamiaj moduł dopiero po zgodzie zgłoszonej przez baner cookies i opisz nagrywanie w polityce prywatności.</target>
       </trans-unit>
     </body>
   </file>

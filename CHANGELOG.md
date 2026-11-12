@@ -5,6 +5,23 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-11-12
+
+### Added
+
+- A "Wait for analytics consent" setting: the Clarity tag loads only after the visitor accepts
+  analytics cookies, and every change of consent is passed to Clarity's `consentv2` API. A withdrawn
+  analytics consent also erases Clarity's cookies and ends the session.
+- Three consent sources: M4P Cookies, Google Consent Mode v2 (`analytics_storage`, `ad_storage` in
+  `dataLayer`) and `m4pClarity.consent(analytics, ads)` for any other banner.
+- A notice on the configuration page while consent waiting is on and M4P Cookies is not active.
+- An upgrade script that turns consent waiting on where M4P Cookies is active and leaves it off
+  elsewhere. New installations start with it on.
+
+### Changed
+
+- The consent notice on the configuration page is shown only while consent waiting is off.
+
 ## [1.0.0] - 2026-10-06
 
 First release under the MIT license. The module continues the work previously published as
