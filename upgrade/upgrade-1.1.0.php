@@ -24,5 +24,5 @@ function upgrade_module_1_1_0($module)
     }
 
     // Waiting needs a consent source; with a banner other than M4P Cookies the tag keeps loading as before.
-    return Configuration::updateValue('m4p_clarity_consent', Module::isEnabled('m4pcookies') ? 1 : 0);
+    return Configuration::updateValue('m4p_clarity_consent', (Module::isEnabled('m4p_cookies') || Module::isEnabled('m4pcookies')) ? 1 : 0);
 }

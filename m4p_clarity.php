@@ -19,7 +19,7 @@ class M4p_Clarity extends Module
     {
         $this->name = 'm4p_clarity';
         $this->tab = 'analytics_stats';
-        $this->version = '1.1.0';
+        $this->version = '1.1.1';
         $this->author = 'Modules4Presta';
         $this->need_instance = 0;
         $this->ps_versions_compliancy = ['min' => '1.7.6.0', 'max' => _PS_VERSION_];
@@ -174,7 +174,7 @@ class M4p_Clarity extends Module
      */
     protected function consentSourceNotice()
     {
-        if ((int) Configuration::get('m4p_clarity_consent') !== 1 || Module::isEnabled('m4pcookies')) {
+        if ((int) Configuration::get('m4p_clarity_consent') !== 1 || self::cookieBannerActive()) {
             return '';
         }
 
@@ -217,6 +217,16 @@ class M4p_Clarity extends Module
                 'Modules.M4pclarity.Admin'
             )
         );
+    }
+
+    /**
+     * Whether M4P Cookies runs in the shop, under its current or its earlier technical name.
+     *
+     * @return bool
+     */
+    public static function cookieBannerActive()
+    {
+        return Module::isEnabled('m4p_cookies') || Module::isEnabled('m4pcookies');
     }
 
     public function hookActionFrontControllerSetMedia()

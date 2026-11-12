@@ -5,6 +5,13 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.1] - 2026-11-12
+
+### Changed
+
+- M4P Cookies is recognised under its technical name `m4p_cookies` as well as `m4pcookies`, both for
+  the notice on the configuration page and in the 1.1.0 upgrade.
+
 ## [1.1.0] - 2026-11-12
 
 ### Added
