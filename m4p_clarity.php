@@ -19,7 +19,7 @@ class M4p_Clarity extends Module
     {
         $this->name = 'm4p_clarity';
         $this->tab = 'analytics_stats';
-        $this->version = '1.0.0';
+        $this->version = '1.1.0';
         $this->author = 'Modules4Presta';
         $this->need_instance = 0;
         $this->ps_versions_compliancy = ['min' => '1.7.6.0', 'max' => _PS_VERSION_];
@@ -34,6 +34,7 @@ class M4p_Clarity extends Module
     const DEFAULTS = [
         'm4p_clarity_text' => '',
         'm4p_clarity_switch' => 0,
+        'm4p_clarity_consent' => 1,
     ];
 
     public function install()
@@ -48,8 +49,9 @@ class M4p_Clarity extends Module
 
     public function uninstall()
     {
-        Configuration::deleteByName('m4p_clarity_text');
-        Configuration::deleteByName('m4p_clarity_switch');
+        foreach (array_keys(self::DEFAULTS) as $key) {
+            Configuration::deleteByName($key);
+        }
 
         return parent::uninstall();
     }
@@ -75,6 +77,25 @@ class M4p_Clarity extends Module
                         ],
                         [
                             'id' => 'active_off',
+                            'value' => 0,
+                            'label' => $this->trans('Off', [], 'Modules.M4pclarity.Admin'),
+                        ],
+                    ],
+                ],
+                [
+                    'type' => 'switch',
+                    'label' => $this->trans('Wait for analytics consent', [], 'Modules.M4pclarity.Admin'),
+                    'name' => 'm4p_clarity_consent',
+                    'is_bool' => true,
+                    'desc' => $this->trans('Loads Clarity only after the visitor accepts analytics cookies, and stops the recording when the consent is withdrawn. The consent comes from M4P Cookies, from Google Consent Mode v2 or from a call to m4pClarity.consent().', [], 'Modules.M4pclarity.Admin'),
+                    'values' => [
+                        [
+                            'id' => 'consent_on',
+                            'value' => 1,
+                            'label' => $this->trans('On', [], 'Modules.M4pclarity.Admin'),
+                        ],
+                        [
+                            'id' => 'consent_off',
                             'value' => 0,
                             'label' => $this->trans('Off', [], 'Modules.M4pclarity.Admin'),
                         ],
@@ -117,6 +138,7 @@ class M4p_Clarity extends Module
             'fields_value' => [
                 'm4p_clarity_text' => Configuration::get('m4p_clarity_text'),
                 'm4p_clarity_switch' => Configuration::get('m4p_clarity_switch'),
+                'm4p_clarity_consent' => Configuration::get('m4p_clarity_consent'),
             ],
             'languages' => $this->context->controller->getLanguages(),
         ];
@@ -137,21 +159,49 @@ class M4p_Clarity extends Module
             } else {
                 Configuration::updateValue('m4p_clarity_text', $projectId);
                 Configuration::updateValue('m4p_clarity_switch', $enabled);
+                Configuration::updateValue('m4p_clarity_consent', (int) Tools::getValue('m4p_clarity_consent') ? 1 : 0);
 
                 Tools::redirectAdmin($this->context->link->getAdminLink('AdminModules') . '&configure=' . $this->name . '&conf=6');
             }
         }
 
-        return $output . $this->consentNotice() . $this->displayForm();
+        return $output . $this->consentNotice() . $this->consentSourceNotice() . $this->displayForm();
+    }
+
+    /**
+     * Without M4P Cookies the tag waits for a signal the module cannot see from the back office,
+     * so the page names the two the script understands.
+     */
+    protected function consentSourceNotice()
+    {
+        if ((int) Configuration::get('m4p_clarity_consent') !== 1 || Module::isEnabled('m4pcookies')) {
+            return '';
+        }
+
+        return $this->displayWarning(
+            $this->trans(
+                'M4P Cookies is not active. Clarity loads once your cookie banner sends Google Consent Mode v2 with analytics_storage granted, or calls m4pClarity.consent(true) in the page.',
+                [],
+                'Modules.M4pclarity.Admin'
+            ) . ' ' . $this->trans(
+                'With a banner that does neither, the tag does not load: switch "Wait for analytics consent" off and load the module the way that banner requires.',
+                [],
+                'Modules.M4pclarity.Admin'
+            )
+        );
     }
 
     /**
      * Clarity records what the visitor does on screen, which EU law treats as
-     * analytics requiring prior consent. The shop owner has to be told that
-     * before switching the module on, not after a complaint.
+     * analytics requiring prior consent, so the page says so while the module
+     * loads the tag without waiting for it.
      */
     protected function consentNotice()
     {
+        if ((int) Configuration::get('m4p_clarity_consent') === 1) {
+            return '';
+        }
+
         return $this->displayWarning(
             $this->trans(
                 'Microsoft Clarity records how visitors use your shop: mouse movement, clicks, scrolling and the content of the pages they see.',
@@ -162,7 +212,7 @@ class M4p_Clarity extends Module
                 [],
                 'Modules.M4pclarity.Admin'
             ) . ' ' . $this->trans(
-                'Switch this module on only once your cookie banner reports that analytics consent has been given, and describe the recording in your privacy policy.',
+                'Turn on "Wait for analytics consent" or load the module only once your cookie banner reports that consent, and describe the recording in your privacy policy.',
                 [],
                 'Modules.M4pclarity.Admin'
             )
@@ -180,6 +230,7 @@ class M4p_Clarity extends Module
         Media::addJsDef([
             'm4pClarity' => [
                 'm4p_clarity_code' => $projectId,
+                'requireConsent' => (int) Configuration::get('m4p_clarity_consent') === 1,
             ],
         ]);
 
